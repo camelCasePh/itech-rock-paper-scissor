@@ -42,6 +42,17 @@
                         <br><br>
 
                         <?php
+                        if(isset($_SESSION['playername'])){
+                            echo $_SESSION['playername'];
+                            unset($_SESSION['playername']);
+                        }
+                                echo"<br>";
+                            if(isset($_SESSION['display'])){
+                                echo $_SESSION['display'];
+                                unset($_SESSION['display']);
+                            }
+
+
                              if(isset($_SESSION['nodata'])){
                                     echo $_SESSION['nodata'];
                                     unset($_SESSION['nodata']);
@@ -81,18 +92,23 @@
                             case "rock":
                                    if($botenemy == "rock"){
                                      echo"Draw!";
-   
+                                     $_SESSION['playername'] = "<div class='display-result'><h1>You</h1> <h1>Bot</h1></div>";
+                                     $_SESSION['display'] = "<div class='display-result'><img src='images/rock.png' alt='' width ='150px'> <img src='images/rock.png' alt='' width ='150px'></div>";
                                      $_SESSION['draw'] = "<div class='message'>Draw</div>";
                                      header('location:'.SITE_URL.'index.php');
    
                                        
                                    }else if($botenemy =="paper" ){
                                        echo"You Lose!";
+                                       $_SESSION['playername'] = "<div class='display-result'><h1>You</h1> <h1>Bot</h1></div>";
+                                     $_SESSION['display'] = "<div class='display-result'><img src='images/rock.png' alt='' width ='150px'> <img src='images/paper.png' alt='' width ='150px'></div>";
                                      $_SESSION['loss'] = "<div class='message'>You Lose!</div>";
                                      header('location:'.SITE_URL.'index.php');
    
                                    }else{
                                        echo "You win!";
+                                       $_SESSION['playername'] = "<div class='display-result'><h1>You</h1> <h1>Bot</h1></div>";
+                                     $_SESSION['display'] = "<div class='display-result'><img src='images/rock.png' alt='' width ='150px'> <img src='images/scissors.png' alt='' width ='150px'></div>";
                                     $_SESSION['win'] = "<div class='message'>You Win!</div>";
                                     header('location:'.SITE_URL.'index.php');
    
@@ -101,15 +117,22 @@
                            case "paper":
                                if($botenemy == "paper"){
                                    echo"Draw";
+                                   $_SESSION['playername'] = "<div class='display-result'><h1>You</h1> <h1>Bot</h1></div>";
+                                   $_SESSION['display'] = "<div class='display-result'><img src='images/paper.png' alt='' width ='150px'> <img src='images/paper.png' alt='' width ='150px'></div>";
                                    $_SESSION['draw'] = "<div class='message'>Draw</div>";
+
                                    header('location:'.SITE_URL.'index.php');
    
                                }else if($botenemy =="scissors" ){
                                    echo"You Lose!";
+                                   $_SESSION['playername'] = "<div class='display-result'><h1>You</h1> <h1>Bot</h1></div>";
+                                   $_SESSION['display'] = "<div class='display-result'><img src='images/paper.png' alt='' width ='150px'> <img src='images/scissors.png' alt='' width ='150px'></div>";
                                    $_SESSION['loss'] = "<div class='message'>You Lose!</div>";
                                    header('location:'.SITE_URL.'index.php');
                                }else{
                                    echo "You win";
+                                   $_SESSION['playername'] = "<div class='display-result'><h1>You</h1> <h1>Bot</h1></div>";
+                                   $_SESSION['display'] = "<div class='display-result'><img src='images/paper.png' alt='' width ='150px'> <img src='images/rock.png' alt='' width ='150px'></div>";
                                    $_SESSION['win'] = "<div class='message'>You Win!</div>";
                                    header('location:'.SITE_URL.'index.php');
                                }
@@ -117,15 +140,21 @@
                            case "scissors":
                            if($botenemy == "scissors"){
                                echo"Draw";
+                               $_SESSION['playername'] = "<div class='display-result'><h1>You</h1> <h1>Bot</h1></div>";
+                               $_SESSION['display'] = "<div class='display-result'><img src='images/scissors.png' alt='' width ='150px'> <img src='images/scissors.png' alt='' width ='150px'></div>";
                                $_SESSION['draw'] = "<div class='message'>Draw</div>";
                                header('location:'.SITE_URL.'index.php');
    
                            }else if($botenemy =="rock" ){
                                echo"You Lose!";
+                               $_SESSION['playername'] = "<div class='display-result'><h1>You</h1> <h1>Bot</h1></div>";
+                               $_SESSION['display'] = "<div class='display-result'><img src='images/scissors.png' alt='' width ='150px'> <img src='images/rock.png' alt='' width ='150px'></div>";
                                $_SESSION['loss'] = "<div class='message'>You Lose!</div>";
                                header('location:'.SITE_URL.'index.php');
                            }else{
                                echo "You win";
+                               $_SESSION['playername'] = "<div class='display-result'><h1>You</h1> <h1>Bot</h1></div>";
+                               $_SESSION['display'] = "<div class='display-result'><img src='images/scissors.png' alt='' width ='150px'> <img src='images/paper.png' alt='' width ='150px'></div>";
                                $_SESSION['win'] = "<div class='message'>You Win!</div>";
                                header('location:'.SITE_URL.'index.php');
                            }
