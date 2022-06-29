@@ -28,9 +28,9 @@
                      
                 </tr>
                 <tr>
-                     <td> <input type="radio" name="rock" value="rock" > </td>
-                     <td class="paper"><input type="radio" name="paper" value="paper" > </td>
-                     <td class="scissors"><input type="radio" name="scissors" value="scissors"> </td>
+                     <td> <input type="radio" name="bet" value="rock" > </td>
+                     <td class="paper"><input type="radio" name="bet" value="paper" > </td>
+                     <td class="scissors"><input type="radio" name="bet" value="scissors"> </td>
                 </tr>    
 
         
@@ -69,84 +69,82 @@
         <?php
                 if(isset($_POST['submit'])){
                    
-                    $rock = $_POST['rock'];
-                    $paper = $_POST['paper'];
-                    $scissors = $_POST['scissors'];
+                    $bet = $_POST['bet'];
 
-                    if(isset($rock)){
-                        $bet = $rock;
-                    }else if(isset($paper)){
-                        $bet = $paper;
-                    }else if(isset($scissors)){
-                        $bet = $scissors;
+                    if($bet != "")
+                    {
+                        $bot = array("rock","paper","scissors");
+                        $botenemy = $bot[rand(0,2)];
+                        echo "$botenemy";
+
+                        switch($bet){
+                            case "rock":
+                                   if($botenemy == "rock"){
+                                     echo"Draw!";
+   
+                                     $_SESSION['draw'] = "<div class='message'>Draw</div>";
+                                     header('location:'.SITE_URL.'index.php');
+   
+                                       
+                                   }else if($botenemy =="paper" ){
+                                       echo"You Lose!";
+                                     $_SESSION['loss'] = "<div class='message'>You Lose!</div>";
+                                     header('location:'.SITE_URL.'index.php');
+   
+                                   }else{
+                                       echo "You win!";
+                                    $_SESSION['win'] = "<div class='message'>You Win!</div>";
+                                    header('location:'.SITE_URL.'index.php');
+   
+                                   }
+                           break;
+                           case "paper":
+                               if($botenemy == "paper"){
+                                   echo"Draw";
+                                   $_SESSION['draw'] = "<div class='message'>Draw</div>";
+                                   header('location:'.SITE_URL.'index.php');
+   
+                               }else if($botenemy =="scissors" ){
+                                   echo"You Lose!";
+                                   $_SESSION['loss'] = "<div class='message'>You Lose!</div>";
+                                   header('location:'.SITE_URL.'index.php');
+                               }else{
+                                   echo "You win";
+                                   $_SESSION['win'] = "<div class='message'>You Win!</div>";
+                                   header('location:'.SITE_URL.'index.php');
+                               }
+                           break;
+                           case "scissors":
+                           if($botenemy == "scissors"){
+                               echo"Draw";
+                               $_SESSION['draw'] = "<div class='message'>Draw</div>";
+                               header('location:'.SITE_URL.'index.php');
+   
+                           }else if($botenemy =="rock" ){
+                               echo"You Lose!";
+                               $_SESSION['loss'] = "<div class='message'>You Lose!</div>";
+                               header('location:'.SITE_URL.'index.php');
+                           }else{
+                               echo "You win";
+                               $_SESSION['win'] = "<div class='message'>You Win!</div>";
+                               header('location:'.SITE_URL.'index.php');
+                           }
+                           break;
+                           default: echo "You dont place a bet.";
+                           $_SESSION['nodata'] = "<div class='message'> You don't place a bet.</div>";
+                           header('location:'.SITE_URL.'index.php');
+   
+                       }
+   
+
                     }else{
                         $_SESSION['nodata'] = "<div class='message'> You don't place a bet.</div>";
                         header('location:'.SITE_URL.'index.php');
                     }
                     
-                    $bot = array("rock","paper","scissors");
-                    $botenemy = $bot[rand(0,2)];
-                    echo "$botenemy";
+                  
 
-                    switch($bet){
-                         case "rock":
-                                if($botenemy == "rock"){
-                                  echo"Draw!";
-
-                                  $_SESSION['draw'] = "<div class='message'>Draw</div>";
-                                  header('location:'.SITE_URL.'index.php');
-
-                                    
-                                }else if($botenemy =="paper" ){
-                                    echo"You Lose!";
-                                  $_SESSION['loss'] = "<div class='message'>You Lose!</div>";
-                                  header('location:'.SITE_URL.'index.php');
-
-                                }else{
-                                    echo "You win!";
-                                 $_SESSION['win'] = "<div class='message'>You Win!</div>";
-                                 header('location:'.SITE_URL.'index.php');
-
-                                }
-                        break;
-                        case "paper":
-                            if($botenemy == "paper"){
-                                echo"Draw";
-                                $_SESSION['draw'] = "<div class='message'>Draw</div>";
-                                header('location:'.SITE_URL.'index.php');
-
-                            }else if($botenemy =="scissors" ){
-                                echo"You Lose!";
-                                $_SESSION['loss'] = "<div class='message'>You Lose!</div>";
-                                header('location:'.SITE_URL.'index.php');
-                            }else{
-                                echo "You win";
-                                $_SESSION['win'] = "<div class='message'>You Win!</div>";
-                                header('location:'.SITE_URL.'index.php');
-                            }
-                        break;
-                        case "scissors":
-                        if($botenemy == "scissors"){
-                            echo"Draw";
-                            $_SESSION['draw'] = "<div class='message'>Draw</div>";
-                            header('location:'.SITE_URL.'index.php');
-
-                        }else if($botenemy =="rock" ){
-                            echo"You Lose!";
-                            $_SESSION['loss'] = "<div class='message'>You Lose!</div>";
-                            header('location:'.SITE_URL.'index.php');
-                        }else{
-                            echo "You win";
-                            $_SESSION['win'] = "<div class='message'>You Win!</div>";
-                            header('location:'.SITE_URL.'index.php');
-                        }
-                        break;
-                        default: echo "You dont place a bet.";
-                        $_SESSION['nodata'] = "<div class='message'> You don't place a bet.</div>";
-                        header('location:'.SITE_URL.'index.php');
-
-                    }
-
+                  
                     
                 }
         ?>
