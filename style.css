@@ -1,0 +1,74 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Aclonica', sans-serif;
+
+
+}
+header{
+    background-color: grey;
+    color: white;
+    text-align: center;
+    font-size: 30px;
+    padding: 20px;
+}
+.container{
+    width: 60%;
+    height: 70vh;
+    margin:100px auto;
+    background-color: grey;
+    border-radius: 10px;
+}
+table{
+    display: flex;
+    justify-content: space-around;
+    align-content: center;
+    margin: 50px;
+}
+table tr{
+    margin-top: 20px;
+    display: flex;
+}
+table tr th{
+    padding-left: 100px;
+}
+
+table tr td{
+    padding-left: 200px;
+   
+}
+table tr .paper{
+    padding-left: 280px;
+}
+table tr .scissors{
+    padding-left: 300px;
+}
+.btn{
+    text-align: center;
+
+}
+.btn input{
+    height: 50px;
+    width: 200px;
+    margin-left: 50px;
+    font-size: 30px;
+    padding: 10px;
+
+}
+.btn input:hover{
+    background-color: black;
+    color: white;
+}
+
+.message{
+    color: white;
+    font-weight: bold;
+    font-size: 50px;
+    text-align: center;
+   font-family: 'Aclonica', sans-serif;
+
+    
+}
+img{
+    border-radius: 500px;
+}
